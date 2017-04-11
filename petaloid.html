@@ -5,15 +5,19 @@
     <title>Petaloid</title>
     <link rel="stylesheet" href="bootstrap.css">
     <style>
+        /*배경은 검정색*/
         body {
             background-color: black;
         }
 
+        /*시간(숫자)이 들어가는 div*/
         div.time {
             color: white;
             font-size: 100px;
         }
-        div.timer{
+
+        /*시계 전체 div*/
+        div.timer {
             margin-top: 10%;
         }
 
@@ -46,7 +50,7 @@
 
     setInterval("timerTest()", 1000);
 
-
+    //DOM 읽어옴
     var hourFirst = document.getElementById('hour-first');
     var hourSecond = document.getElementById('hour-second');
     var minFirst = document.getElementById('min-first');
@@ -55,14 +59,19 @@
 
 
     function timerTest() {
+        //시간, 분, 초를 각각 읽어옴
         var d = new Date();
         var hourVal = d.getHours();
         var minVal = d.getMinutes();
         var secVal = d.getSeconds();
+
+        //시간과 분은 2자리를 각각 자리수 마다 파싱
         var firstHourVal = parseInt(hourVal / 10);
         var secondHourVal = parseInt(hourVal % 10);
         var firstMinVal = parseInt(minVal / 10);
         var secondMinVal = parseInt(minVal % 10);
+
+        //DOM에 시간, 분, 초 입력
         hourFirst.innerHTML = firstHourVal;
         hourSecond.innerHTML = secondHourVal;
         minFirst.innerHTML = firstMinVal;
