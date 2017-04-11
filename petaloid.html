@@ -1,3 +1,8 @@
+<!--TODO-->
+<!--1. 0~9에 해당하는 이미지 파일 가져오기-->
+<!--2. 0~59초에 해당하는 이미지 파일 가져오기-->
+<!--3. 로고넣기-->
+<!--4. css정돈-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +62,6 @@
     var minSecond = document.getElementById('min-second');
     var sec = document.getElementById('sec');
 
-
     function timerTest() {
         //시간, 분, 초를 각각 읽어옴
         var d = new Date();
@@ -65,11 +69,11 @@
         var minVal = d.getMinutes();
         var secVal = d.getSeconds();
 
-        //시간과 분은 2자리를 각각 자리수 마다 파싱
-        var firstHourVal = parseInt(hourVal / 10);
-        var secondHourVal = parseInt(hourVal % 10);
-        var firstMinVal = parseInt(minVal / 10);
-        var secondMinVal = parseInt(minVal % 10);
+        //시간과 분은 각각 자리수 마다 파싱
+        var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
+        var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
+        var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
+        var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
 
         //DOM에 시간, 분, 초 입력
         hourFirst.innerHTML = firstHourVal;
