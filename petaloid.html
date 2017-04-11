@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Petaloid</title>
+    <style>
+
+      div {
+        display : inline;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="hour"></div>시
+    <div id="min"></div>분
+    <div id="sec"></div>초
+    <script>
+
+    setInterval("timerTest()", 1000);
+
+
+    var hour = document.getElementById('hour');
+    var min = document.getElementById('min');
+    var sec = document.getElementById('sec');
+
+    function timerTest(){
+
+
+      var d = new Date();
+
+      hour.innerHTML = "" + d.getHours();
+      min.innerHTML = "" + d.getMinutes();
+      sec.innerHTML = "" + d.getSeconds();
+      
+    }
+    </script>
+  </body>
+
+
+</html>
