@@ -216,6 +216,7 @@
         alert(secVal);
         //초 시계 petaloid
         if(secVal>=1 && secVal<=30) {
+            petaloid[secVal].classList.remove('animated', 'fadeOut');
             petaloid[secVal].setAttribute('style', 'stroke: white');
             petaloid[secVal].classList.add('animated', 'fadeIn');
         }else if(secVal>=31 && secVal <=35){
