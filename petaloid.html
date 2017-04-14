@@ -219,20 +219,42 @@
             petaloid[secVal].setAttribute('style', 'stroke: white');
             petaloid[secVal].classList.add('animated', 'fadeIn');
         }else if(secVal>=31 && secVal <=35){
-            petaloid[secVal-5].setAttribute('style','stroke: black');
             petaloid[secVal-5].classList.remove('animated', 'fadeIn');
+            petaloid[secVal-5].classList.add('animated', 'fadeOut');
+            setTimeout(function(){
+                petaloid[secVal-5].setAttribute('style','stroke: black');
+            }, 500);
+
         }else if(secVal>=36 && secVal <=45) {
-            petaloid[secVal-20].setAttribute('style','stroke: black');
             petaloid[secVal-20].classList.remove('animated', 'fadeIn');
+            petaloid[secVal-20].classList.add('animated', 'fadeOut');
+            setTimeout(function(){
+                petaloid[secVal-20].setAttribute('style','stroke: black');
+            }, 500);
+
         }else if(secVal>=46 && secVal <=55) {
-            petaloid[secVal-40].setAttribute('style','stroke: black');
             petaloid[secVal-40].classList.remove('animated', 'fadeIn');
+            petaloid[secVal-40].classList.add('animated', 'fadeOut');
+            setTimeout(function(){
+                petaloid[secVal-40].setAttribute('style','stroke: black');
+            }, 500);
+
         }else if(secVal>=55 && secVal <=60){
-            petaloid[secVal-55].setAttribute('style','stroke: black');
             petaloid[secVal-55].classList.remove('animated', 'fadeIn');
+            petaloid[secVal-55].classList.add('animated', 'fadeOut');
+            setTimeout(function(){
+                petaloid[secVal-55].setAttribute('style','stroke: black');
+            }, 500);
+
         }else if(secVal==0) {
-            petaloid[5].setAttribute('style','stroke: black');
             petaloid[5].classList.remove('animated', 'fadeIn');
+            petaloid[5].classList.add('animated', 'fadeOut');
+
+            petaloid[5].setAttribute('style','stroke: black');
+            setTimeout(function(){
+                petaloid[5].setAttribute('style','stroke: black');
+            }, 500);
+
         }
         //DOM에 시간, 분, 초 입력
         hourFirst.innerHTML = firstHourVal;
