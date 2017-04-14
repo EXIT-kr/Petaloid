@@ -110,17 +110,18 @@
 <script>
   window.onload=function() {
     var a = document.getElementById("petal").contentDocument;
+
     console.log(a);
     var d1 = a.getElementById('d1');
+    d1.setAttribute('style', 'stroke: red');
     console.log(d1);
   };
   $(document).ready(function(){
     var a = document.getElementById("petal").contentDocument;
+
     console.log(a);
 
-    $('#test').click(function () {
-      $('#d1').css({stroke: 'red'});
-    })
+
 //    console.log(a);
 //    var svgDoc = a.contentDocument;
 //    console.log(svgDoc);
