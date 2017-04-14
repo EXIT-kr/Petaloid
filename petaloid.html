@@ -35,8 +35,10 @@
             bottom: 0px;
             border: 1px solid white;
         }
-        .logo path {
-          fill: white;
+
+
+        path#d1 {
+            stroke: red;
         }
     </style>
 </head>
@@ -70,77 +72,66 @@
     PET
 </div>
 <script>
-$(document).ready(function(){
-  jQuery('img.svg').each(function(){
-      var $img = jQuery(this);
-      var imgID = $img.attr('id');
-      var imgClass = $img.attr('class');
-      var imgURL = $img.attr('src');
 
-      jQuery.get(imgURL, function(data) {
-          // Get the SVG tag, ignore the rest
-          var $svg = jQuery(data).find('svg');
+  setInterval("timerTest()", 1000);
 
-          // Add replaced image's ID to the new SVG
-          if(typeof imgID !== 'undefined') {
-              $svg = $svg.attr('id', imgID);
-          }
-          // Add replaced image's classes to the new SVG
-          if(typeof imgClass !== 'undefined') {
-              $svg = $svg.attr('class', imgClass+' replaced-svg');
-          }
+  //DOM 읽어옴
+  var hourFirst = document.getElementById('hour-first');
+  var hourSecond = document.getElementById('hour-second');
+  var minFirst = document.getElementById('min-first');
+  var minSecond = document.getElementById('min-second');
+  var sec = document.getElementById('sec');
 
-          // Remove any invalid XML tags as per http://validator.w3.org
-          $svg = $svg.removeAttr('xmlns:a');
+  function timerTest() {
+    //시간, 분, 초를 각각 읽어옴
+    var d = new Date();
+    var hourVal = d.getHours();
+    var minVal = d.getMinutes();
+    var secVal = d.getSeconds();
 
-          // Check if the viewport is set, if the viewport is not set the SVG wont't scale.
-          if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-              $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
-          }
+    //시간과 분은 각각 자리수 마다 파싱
+    var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
+    var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
+    var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
+    var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
 
-          // Replace image with new SVG
-          $img.replaceWith($svg);
+    //DOM에 시간, 분, 초 입력
+    hourFirst.innerHTML = firstHourVal;
+    hourSecond.innerHTML = secondHourVal;
+    minFirst.innerHTML = firstMinVal;
+    minSecond.innerHTML = secondMinVal;
+    sec.innerHTML = secVal;
 
-      }, 'xml');
+
+  }
+</script>
+<object id="petal" type="image/svg+xml" data="./main-logo/petaloid.svg"></object>
+<button id="test">test</button>
+<script>
+  window.onload=function() {
+    var a = document.getElementById("petal").contentDocument;
+    console.log(a);
+    var d1 = a.getElementById('d1');
+    console.log(d1);
+  };
+  $(document).ready(function(){
+    var a = document.getElementById("petal").contentDocument;
+    console.log(a);
+
+    $('#test').click(function () {
+      $('#d1').css({stroke: 'red'});
+    })
+//    console.log(a);
+//    var svgDoc = a.contentDocument;
+//    console.log(svgDoc);
+//
+//    var d1 = svgDoc.getElementById("d1");
+//    console.log(d1);
+//    $('#d1').css({'stroke': 'white'});
+
 
   });
-})
-
-</script>
-<script>
-
-    setInterval("timerTest()", 1000);
-
-    //DOM 읽어옴
-    var hourFirst = document.getElementById('hour-first');
-    var hourSecond = document.getElementById('hour-second');
-    var minFirst = document.getElementById('min-first');
-    var minSecond = document.getElementById('min-second');
-    var sec = document.getElementById('sec');
-
-    function timerTest() {
-        //시간, 분, 초를 각각 읽어옴
-        var d = new Date();
-        var hourVal = d.getHours();
-        var minVal = d.getMinutes();
-        var secVal = d.getSeconds();
-
-        //시간과 분은 각각 자리수 마다 파싱
-        var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
-        var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
-        var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
-        var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
-
-        //DOM에 시간, 분, 초 입력
-        hourFirst.innerHTML = firstHourVal;
-        hourSecond.innerHTML = secondHourVal;
-        minFirst.innerHTML = firstMinVal;
-        minSecond.innerHTML = secondMinVal;
-        sec.innerHTML = secVal;
-
-
-    }
 </script>
 </body>
-  <img class="logo" src="./main-logo/petaloid.svg"/ style="fill: white;"/>
+
 </html>
