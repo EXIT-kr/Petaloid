@@ -48,10 +48,28 @@
 	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
 <style type="text/css">
 
-	.st0{display:none;}
-    .st1{display:inline;fill:none;stroke:#000000;stroke-miterlimit:10;}
-    .st2{fill:none;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-    path{stroke:white;}
+	.st0 {
+        display: none;
+    }
+
+    .st1 {
+        display: inline;
+        fill: none;
+        stroke: #000000;
+        stroke-miterlimit: 10;
+    }
+
+    .st2 {
+        fill: none;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    path {
+        stroke: white;
+    }
 </style>
 <g id="Layer_1" class="st0">
 	<polygon class="st1" points="336.1,754.5 227.4,419 512,211.7 796.6,419.2 687.9,754.5 	"/>
@@ -158,111 +176,280 @@
 </body>
 <script>
 
-    setInterval("timerTest()", 1000);
+  //  setInterval("timerTest()", 1000);
+  //DOM 읽어옴
+  var hourFirst = document.getElementById('hour-first');
+  var hourSecond = document.getElementById('hour-second');
+  var minFirst = document.getElementById('min-first');
+  var minSecond = document.getElementById('min-second');
+  var sec = document.getElementById('sec');
+  //PETALOID 읽어옴
+  var petaloid = [];
+  petaloid[1] = document.getElementById('d1');
+  petaloid[2] = document.getElementById('d2');
+  petaloid[3] = document.getElementById('d3');
+  petaloid[4] = document.getElementById('d4');
+  petaloid[5] = document.getElementById('d5');
+  petaloid[6] = document.getElementById('d6');
+  petaloid[7] = document.getElementById('d7');
+  petaloid[8] = document.getElementById('d8');
+  petaloid[9] = document.getElementById('d9');
+  petaloid[10] = document.getElementById('d10');
+  petaloid[11] = document.getElementById('d11');
+  petaloid[12] = document.getElementById('d12');
+  petaloid[13] = document.getElementById('d13');
+  petaloid[14] = document.getElementById('d14');
+  petaloid[15] = document.getElementById('d15');
+  petaloid[16] = document.getElementById('d16');
+  petaloid[17] = document.getElementById('d17');
+  petaloid[18] = document.getElementById('d18');
+  petaloid[19] = document.getElementById('d19');
+  petaloid[20] = document.getElementById('d20');
+  petaloid[21] = document.getElementById('d21');
+  petaloid[22] = document.getElementById('d22');
+  petaloid[23] = document.getElementById('d23');
+  petaloid[24] = document.getElementById('d24');
+  petaloid[25] = document.getElementById('d25');
+  petaloid[26] = document.getElementById('d26');
+  petaloid[27] = document.getElementById('d27');
+  petaloid[28] = document.getElementById('d28');
+  petaloid[29] = document.getElementById('d29');
+  petaloid[30] = document.getElementById('d30');
 
-    //DOM 읽어옴
-    var hourFirst = document.getElementById('hour-first');
-    var hourSecond = document.getElementById('hour-second');
-    var minFirst = document.getElementById('min-first');
-    var minSecond = document.getElementById('min-second');
-    var sec = document.getElementById('sec');
-    //PETALOID 읽어옴
-    var petaloid = [];
-    petaloid[1] = document.getElementById('d1');
-    petaloid[2] = document.getElementById('d2');
-    petaloid[3] = document.getElementById('d3');
-    petaloid[4] = document.getElementById('d4');
-    petaloid[5] = document.getElementById('d5');
-    petaloid[6] = document.getElementById('d6');
-    petaloid[7] = document.getElementById('d7');
-    petaloid[8] = document.getElementById('d8');
-    petaloid[9] = document.getElementById('d9');
-    petaloid[10] = document.getElementById('d10');
-    petaloid[11] = document.getElementById('d11');
-    petaloid[12] = document.getElementById('d12');
-    petaloid[13] = document.getElementById('d13');
-    petaloid[14] = document.getElementById('d14');
-    petaloid[15] = document.getElementById('d15');
-    petaloid[16] = document.getElementById('d16');
-    petaloid[17] = document.getElementById('d17');
-    petaloid[18] = document.getElementById('d18');
-    petaloid[19] = document.getElementById('d19');
-    petaloid[20] = document.getElementById('d20');
-    petaloid[21] = document.getElementById('d21');
-    petaloid[22] = document.getElementById('d22');
-    petaloid[23] = document.getElementById('d23');
-    petaloid[24] = document.getElementById('d24');
-    petaloid[25] = document.getElementById('d25');
-    petaloid[26] = document.getElementById('d26');
-    petaloid[27] = document.getElementById('d27');
-    petaloid[28] = document.getElementById('d28');
-    petaloid[29] = document.getElementById('d29');
-    petaloid[30] = document.getElementById('d30');
-
-    function timerTest() {
+  function timerTest() {
 //    var a = document.getElementById("petal").contentDocument;
 
-        //시간, 분, 초를 각각 읽어옴
-        var d = new Date();
-        var hourVal = d.getHours();
-        var minVal = d.getMinutes();
-        var secVal = d.getSeconds();
+    //시간, 분, 초를 각각 읽어옴
+    var d = new Date();
+    var hourVal = d.getHours();
+    var minVal = d.getMinutes();
+    var secVal = d.getSeconds();
 
-        //시간과 분은 각각 자리수 마다 파싱
-        var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
-        var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
-        var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
-        var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
-        //초 시계 petaloid
-        if(secVal>=1 && secVal<=30) {
-            petaloid[secVal].classList.remove('animated', 'fadeOut');
-            petaloid[secVal].setAttribute('style', 'stroke: white');
-            petaloid[secVal].classList.add('animated', 'fadeIn');
-        }else if(secVal>=31 && secVal <=35){
-            petaloid[secVal-5].classList.remove('animated', 'fadeIn');
-            petaloid[secVal-5].classList.add('animated', 'fadeOut');
-            setTimeout(function(){
-                petaloid[secVal-5].setAttribute('style','stroke: black');
-            }, 500);
+    //시간과 분은 각각 자리수 마다 파싱
+    var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
+    var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
+    var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
+    var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
+    //초 시계 petaloid
+    if (secVal >= 1 && secVal <= 30) {
+      petaloid[secVal].classList.remove('animated', 'fadeOut');
+      petaloid[secVal].setAttribute('style', 'stroke: white');
+      petaloid[secVal].classList.add('animated', 'fadeIn');
+    } else if (secVal >= 31 && secVal <= 35) {
+      petaloid[secVal - 5].classList.remove('animated', 'fadeIn');
+      petaloid[secVal - 5].classList.add('animated', 'fadeOut');
+      setTimeout(function () {
+        petaloid[secVal - 5].setAttribute('style', 'stroke: black');
+      }, 500);
 
-        }else if(secVal>=36 && secVal <=45) {
-            petaloid[secVal-20].classList.remove('animated', 'fadeIn');
-            petaloid[secVal-20].classList.add('animated', 'fadeOut');
-            setTimeout(function(){
-                petaloid[secVal-20].setAttribute('style','stroke: black');
-            }, 500);
+    } else if (secVal >= 36 && secVal <= 45) {
+      petaloid[secVal - 20].classList.remove('animated', 'fadeIn');
+      petaloid[secVal - 20].classList.add('animated', 'fadeOut');
+      setTimeout(function () {
+        petaloid[secVal - 20].setAttribute('style', 'stroke: black');
+      }, 500);
 
-        }else if(secVal>=46 && secVal <=55) {
-            petaloid[secVal-40].classList.remove('animated', 'fadeIn');
-            petaloid[secVal-40].classList.add('animated', 'fadeOut');
-            setTimeout(function(){
-                petaloid[secVal-40].setAttribute('style','stroke: black');
-            }, 500);
+    } else if (secVal >= 46 && secVal <= 55) {
+      petaloid[secVal - 40].classList.remove('animated', 'fadeIn');
+      petaloid[secVal - 40].classList.add('animated', 'fadeOut');
+      setTimeout(function () {
+        petaloid[secVal - 40].setAttribute('style', 'stroke: black');
+      }, 500);
 
-        }else if(secVal>=55 && secVal <=60){
-            petaloid[secVal-55].classList.remove('animated', 'fadeIn');
-            petaloid[secVal-55].classList.add('animated', 'fadeOut');
-            setTimeout(function(){
-                petaloid[secVal-55].setAttribute('style','stroke: black');
-            }, 500);
+    } else if (secVal >= 55 && secVal <= 60) {
+      petaloid[secVal - 55].classList.remove('animated', 'fadeIn');
+      petaloid[secVal - 55].classList.add('animated', 'fadeOut');
+      setTimeout(function () {
+        petaloid[secVal - 55].setAttribute('style', 'stroke: black');
+      }, 500);
 
-        }else if(secVal==0) {
-            petaloid[5].classList.remove('animated', 'fadeIn');
-            petaloid[5].classList.add('animated', 'fadeOut');
+    } else if (secVal == 0) {
+      petaloid[5].classList.remove('animated', 'fadeIn');
+      petaloid[5].classList.add('animated', 'fadeOut');
 
-            petaloid[5].setAttribute('style','stroke: black');
-            setTimeout(function(){
-                petaloid[5].setAttribute('style','stroke: black');
-            }, 500);
-
-        }
-        //DOM에 시간, 분, 초 입력
-        hourFirst.innerHTML = firstHourVal;
-        hourSecond.innerHTML = secondHourVal;
-        minFirst.innerHTML = firstMinVal;
-        minSecond.innerHTML = secondMinVal;
-
+      petaloid[5].setAttribute('style', 'stroke: black');
+      setTimeout(function () {
+        petaloid[5].setAttribute('style', 'stroke: black');
+      }, 500);
 
     }
+    //DOM에 시간, 분, 초 입력
+    hourFirst.innerHTML = firstHourVal;
+    hourSecond.innerHTML = secondHourVal;
+    minFirst.innerHTML = firstMinVal;
+    minSecond.innerHTML = secondMinVal;
+  }
+
+  function petaloid_all_fadeOut() {
+    for (var i = 1; i <= 30; i++) {
+      petaloid[i].classList.add('animated', 'fadeOut');
+    }
+  }
+
+  function petaloid_toggle(n) {
+    petaloid[n].classList.remove('animated', 'fadeOut');
+    petaloid[n].classList.add('animated', 'fadeIn');
+  }
+  function petaloid_number1() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(6);
+    petaloid_toggle(7);
+    petaloid_toggle(2);
+    petaloid_toggle(10);
+    petaloid_toggle(22);
+  }
+  function petaloid_number2() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(26);
+    petaloid_toggle(19);
+    petaloid_toggle(9);
+    petaloid_toggle(3);
+    petaloid_toggle(12);
+    petaloid_toggle(11);
+    petaloid_toggle(21);
+  }
+  function petaloid_number3() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(26);
+    petaloid_toggle(18);
+    petaloid_toggle(6);
+    petaloid_toggle(1);
+    petaloid_toggle(8);
+    petaloid_toggle(20);
+    petaloid_toggle(28);
+  }
+  function petaloid_number4() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(30);
+    petaloid_toggle(24);
+    petaloid_toggle(12);
+    petaloid_toggle(3);
+    petaloid_toggle(9);
+    petaloid_toggle(7);
+    petaloid_toggle(2);
+    petaloid_toggle(10);
+    petaloid_toggle(22);
+  }
+
+  function petaloid_number5() {
+	petaloid_all_fadeOut();
+	petaloid_toggle(26);
+	petaloid_toggle(16);
+	petaloid_toggle(15);
+	petaloid_toggle(1);
+	petaloid_toggle(8);
+	petaloid_toggle(20);
+	petaloid_toggle(28);
+  }
+
+  function petaloid_number6() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(26);
+    petaloid_toggle(30);
+    petaloid_toggle(30);
+    petaloid_toggle(29);
+    petaloid_toggle(28);
+    petaloid_toggle(20);
+    petaloid_toggle(8);
+    petaloid_toggle(1);
+    petaloid_toggle(15);
+    petaloid_toggle(25);
+  }
+  function petaloid_number7() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(16);
+    petaloid_toggle(26);
+    petaloid_toggle(19);
+    petaloid_toggle(9);
+    petaloid_toggle(10);
+    petaloid_toggle(22);
+  }
+
+  function petaloid_number8() {
+    petaloid_all_fadeOut();
+    petaloid_toggle(26);
+    petaloid_toggle(16);
+    petaloid_toggle(15);
+    petaloid_toggle(1);
+    petaloid_toggle(8);
+    petaloid_toggle(20);
+    petaloid_toggle(28);
+    petaloid_toggle(23);
+    petaloid_toggle(13);
+    petaloid_toggle(5);
+    petaloid_toggle(6);
+    petaloid_toggle(18);
+  }
+  
+  function petaloid_number9() {
+	petaloid_all_fadeOut();
+	petaloid_toggle(30);
+	petaloid_toggle(26);
+	petaloid_toggle(27);
+	petaloid_toggle(28);
+	petaloid_toggle(24);
+	petaloid_toggle(12);
+	petaloid_toggle(3);
+	petaloid_toggle(9);
+	petaloid_toggle(19);
+  }
+  
+  function petaloid_number0() {
+	petaloid_all_fadeOut();
+	petaloid_toggle(26);
+	petaloid_toggle(27);
+	petaloid_toggle(28);
+	petaloid_toggle(29);
+	petaloid_toggle(30);
+	petaloid_toggle(3);
+  }
+
+  function petaloid_draw_number(n) {
+	switch (n){
+	  case 1:
+	    petaloid_number1();
+	    break;
+	  case 2:
+	    petaloid_number2();
+	    break;
+	  case 3:
+	    petaloid_number3();
+	    break;
+	  case 4:
+	    petaloid_number4();
+	    break;
+	  case 5:
+	    petaloid_number5();
+	    break;
+	  case 6:
+	    petaloid_number6();
+	    break;
+	  case 7:
+	    petaloid_number7();
+	    break;
+	  case 8:
+	    petaloid_number8();
+	    break;
+	  case 9:
+	    petaloid_number9();
+	    break;
+	  case 0:
+	    petaloid_number0();
+	    break;
+	}
+  }
+  var n = 0;
+  setInterval(function() {
+    petaloid_draw_number(n);
+    n++;
+    if (n > 9)  n = 0;
+  }, 1000
+  );
+//  petaloid_number1();
+//  setTimeout(petaloid_number1, 1000);
+//  setTimeout(petaloid_number1, 1000);
+
+
+
 </script>
 </html>
