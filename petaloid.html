@@ -273,6 +273,7 @@
 
     function second_petaloid(petaloid) {
         //시간, 분, 초를 각각 읽어옴
+
         var d = new Date();
         var hourVal = d.getHours();
         var minVal = d.getMinutes();
@@ -325,6 +326,10 @@
             }, 500);
 
         }
+        petaloid_drawNumber(petaloid_1, firstHourVal);
+        petaloid_drawNumber(petaloid_2, secondHourVal);
+        petaloid_drawNumber(petaloid_3, firstMinVal);
+        petaloid_drawNumber(petaloid_4, secondMinVal);
 
     }
 
@@ -358,7 +363,7 @@
         petaloid_drawNumber(petaloid_3, firstMinVal);
         petaloid_drawNumber(petaloid_4, secondMinVal);
     };
-    setInterval(second_petaloid(petaloid_second), 1000);
+    setInterval( function() { second_petaloid(petaloid_second); }, 500 );
     //DOM 읽어옴
     var sec = document.getElementById('sec');
 
