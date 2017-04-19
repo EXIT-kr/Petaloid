@@ -1,8 +1,3 @@
-<!--TODO-->
-<!--1. 0~9에 해당하는 이미지 파일 가져오기-->
-<!--2. 0~59초에 해당하는 이미지 파일 가져오기-->
-<!--3. 로고넣기-->
-<!--4. css정돈-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +6,14 @@
     <link rel="stylesheet" href="bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <style>
-        /*배경은 검정색*/
+
         body {
             background-color: black;
             color: white;
             font-size: 100px;
         }
 
-        /*시계 전체 div*/
         div.timer {
             margin-top: 10%;
         }
@@ -29,7 +22,6 @@
             position: absolute;
             margin-left: 20px;
             bottom: 0px;
-            /*border: 1px solid white;*/
         }
 
         div#petaloid-logo {
@@ -51,14 +43,26 @@
     <div class="row">
         <div id="hour" class="col-md-4 col-md-offset-2 text-center">
             <div class="row">
-                <div id="hour-first" class="col-md-6"><object id="petal1" data="main-logo/petaloid.svg" type="image/svg+xml" style="width: 200px;"></object></div>
-                <div id="hour-second" class="col-md-6"><object id="petal2" data="main-logo/petaloid.svg" type="image/svg+xml" style="width: 200px;"></object></div>
+                <div id="hour-first" class="col-md-6">
+                    <object id="petal1" data="main-logo/petaloid.svg" type="image/svg+xml"
+                            style="width: 200px;"></object>
+                </div>
+                <div id="hour-second" class="col-md-6">
+                    <object id="petal2" data="main-logo/petaloid.svg" type="image/svg+xml"
+                            style="width: 200px;"></object>
+                </div>
             </div>
         </div>
         <div id="min" class="col-md-4 text-center">
             <div class="row">
-                <div id="min-first" class="col-md-6"><object id="petal3" data="main-logo/petaloid.svg" type="image/svg+xml" style="width: 200px;"></object></div>
-                <div id="min-second" class="col-md-6"><object id="petal4" data="main-logo/petaloid.svg" type="image/svg+xml" style="width: 200px;"></object></div>
+                <div id="min-first" class="col-md-6">
+                    <object id="petal3" data="main-logo/petaloid.svg" type="image/svg+xml"
+                            style="width: 200px;"></object>
+                </div>
+                <div id="min-second" class="col-md-6">
+                    <object id="petal4" data="main-logo/petaloid.svg" type="image/svg+xml"
+                            style="width: 200px;"></object>
+                </div>
             </div>
         </div>
     </div>
@@ -73,169 +77,143 @@
     PET
 </div>
 
-
-<!-- <script>
-  window.onload=function() {
-    var a = document.getElementById("petal").contentDocument;
-
-    console.log(a);
-    var d1 = document.getElementById('d1');
-    d1.setAttribute('style', 'stroke: black');
-    console.log(d1);
-  };
-  $(document).ready(function(){
-    var a = document.getElementById("petal").contentDocument;
-
-    console.log(a);
-
-
-//    console.log(a);
-//    var svgDoc = a.contentDocument;
-//    console.log(svgDoc);
-//
-//    var d1 = svgDoc.getElementById("d1");
-//    console.log(d1);
-//    $('#d1').css({'stroke': 'white'});
-
-
-  });
-</script> -->
 </body>
 <script>
-    //petaloid array initailizing
+
     function init_petaloid(petaloid, svgDoc) {
 
         for (var i = 1; i <= 30; i++) {
             petaloid.push(svgDoc.getElementById('d' + i));
         }
     }
-    //All petaloid will be fadeOut
+
     function petaloid_all_fadeOut(petaloid) {
         for (var i = 1; i <= 30; i++) {
             petaloid[i].classList.add('animated', 'fadeOut');
             petaloid[i].setAttribute('style', 'stroke: black');
         }
     }
-    //petaloid[n] will be fadeIn
-    function petaloid_toggle(petaloid, n) {
+
+    function petaloid_fadeIn(petaloid, n) {
         petaloid[n].classList.remove('animated', 'fadeOut');
         petaloid[n].setAttribute('style', 'stroke: white');
         petaloid[n].classList.add('animated', 'fadeIn');
     }
 
+    function petaloid_fadeOut(petaloid, n) {
+        petaloid[n].classList.remove('animated', 'fadeIn');
+        petaloid[n].classList.add('animated', 'fadeOut');
+        setTimeout(function () {
+            petaloid[n].setAttribute('style', 'stroke: black');
+        }, 1000);
+    }
+
     function petaloid_number1(petaloid) {
-        petaloid_toggle(petaloid, 6);
-        petaloid_toggle(petaloid, 7);
-        petaloid_toggle(petaloid, 2);
-        petaloid_toggle(petaloid, 10);
-        petaloid_toggle(petaloid, 22);
+        petaloid_fadeIn(petaloid, 6);
+        petaloid_fadeIn(petaloid, 7);
+        petaloid_fadeIn(petaloid, 2);
+        petaloid_fadeIn(petaloid, 10);
+        petaloid_fadeIn(petaloid, 22);
     }
 
     function petaloid_number2(petaloid) {
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 19);
-        petaloid_toggle(petaloid, 9);
-        petaloid_toggle(petaloid, 3);
-        petaloid_toggle(petaloid, 12);
-        petaloid_toggle(petaloid, 11);
-        petaloid_toggle(petaloid, 21);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 19);
+        petaloid_fadeIn(petaloid, 9);
+        petaloid_fadeIn(petaloid, 3);
+        petaloid_fadeIn(petaloid, 12);
+        petaloid_fadeIn(petaloid, 11);
+        petaloid_fadeIn(petaloid, 21);
     }
 
     function petaloid_number3(petaloid) {
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 18);
-        petaloid_toggle(petaloid, 6);
-        petaloid_toggle(petaloid, 1);
-        petaloid_toggle(petaloid, 8);
-        petaloid_toggle(petaloid, 20);
-        petaloid_toggle(petaloid, 28);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 18);
+        petaloid_fadeIn(petaloid, 6);
+        petaloid_fadeIn(petaloid, 1);
+        petaloid_fadeIn(petaloid, 8);
+        petaloid_fadeIn(petaloid, 20);
+        petaloid_fadeIn(petaloid, 28);
     }
 
     function petaloid_number4(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 30);
-        petaloid_toggle(petaloid, 24);
-        petaloid_toggle(petaloid, 12);
-        petaloid_toggle(petaloid, 3);
-        petaloid_toggle(petaloid, 9);
-        petaloid_toggle(petaloid, 7);
-        petaloid_toggle(petaloid, 2);
-        petaloid_toggle(petaloid, 10);
-        petaloid_toggle(petaloid, 22);
+        petaloid_fadeIn(petaloid, 30);
+        petaloid_fadeIn(petaloid, 24);
+        petaloid_fadeIn(petaloid, 12);
+        petaloid_fadeIn(petaloid, 3);
+        petaloid_fadeIn(petaloid, 9);
+        petaloid_fadeIn(petaloid, 7);
+        petaloid_fadeIn(petaloid, 2);
+        petaloid_fadeIn(petaloid, 10);
+        petaloid_fadeIn(petaloid, 22);
     }
 
     function petaloid_number5(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 16);
-        petaloid_toggle(petaloid, 15);
-        petaloid_toggle(petaloid, 1);
-        petaloid_toggle(petaloid, 8);
-        petaloid_toggle(petaloid, 20);
-        petaloid_toggle(petaloid, 28);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 16);
+        petaloid_fadeIn(petaloid, 15);
+        petaloid_fadeIn(petaloid, 1);
+        petaloid_fadeIn(petaloid, 8);
+        petaloid_fadeIn(petaloid, 20);
+        petaloid_fadeIn(petaloid, 28);
     }
 
     function petaloid_number6(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 30);
-        petaloid_toggle(petaloid, 30);
-        petaloid_toggle(petaloid, 29);
-        petaloid_toggle(petaloid, 28);
-        petaloid_toggle(petaloid, 20);
-        petaloid_toggle(petaloid, 8);
-        petaloid_toggle(petaloid, 1);
-        petaloid_toggle(petaloid, 15);
-        petaloid_toggle(petaloid, 25);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 30);
+        petaloid_fadeIn(petaloid, 30);
+        petaloid_fadeIn(petaloid, 29);
+        petaloid_fadeIn(petaloid, 28);
+        petaloid_fadeIn(petaloid, 20);
+        petaloid_fadeIn(petaloid, 8);
+        petaloid_fadeIn(petaloid, 1);
+        petaloid_fadeIn(petaloid, 15);
+        petaloid_fadeIn(petaloid, 25);
     }
 
     function petaloid_number7(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 16);
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 19);
-        petaloid_toggle(petaloid, 9);
-        petaloid_toggle(petaloid, 10);
-        petaloid_toggle(petaloid, 22);
+        petaloid_fadeIn(petaloid, 16);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 19);
+        petaloid_fadeIn(petaloid, 9);
+        petaloid_fadeIn(petaloid, 10);
+        petaloid_fadeIn(petaloid, 22);
     }
 
     function petaloid_number8(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 16);
-        petaloid_toggle(petaloid, 15);
-        petaloid_toggle(petaloid, 1);
-        petaloid_toggle(petaloid, 8);
-        petaloid_toggle(petaloid, 20);
-        petaloid_toggle(petaloid, 28);
-        petaloid_toggle(petaloid, 23);
-        petaloid_toggle(petaloid, 13);
-        petaloid_toggle(petaloid, 5);
-        petaloid_toggle(petaloid, 6);
-        petaloid_toggle(petaloid, 18);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 16);
+        petaloid_fadeIn(petaloid, 15);
+        petaloid_fadeIn(petaloid, 1);
+        petaloid_fadeIn(petaloid, 8);
+        petaloid_fadeIn(petaloid, 20);
+        petaloid_fadeIn(petaloid, 28);
+        petaloid_fadeIn(petaloid, 23);
+        petaloid_fadeIn(petaloid, 13);
+        petaloid_fadeIn(petaloid, 5);
+        petaloid_fadeIn(petaloid, 6);
+        petaloid_fadeIn(petaloid, 18);
     }
 
     function petaloid_number9(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 30);
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 27);
-        petaloid_toggle(petaloid, 28);
-        petaloid_toggle(petaloid, 24);
-        petaloid_toggle(petaloid, 12);
-        petaloid_toggle(petaloid, 3);
-        petaloid_toggle(petaloid, 9);
-        petaloid_toggle(petaloid, 19);
+        petaloid_fadeIn(petaloid, 30);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 27);
+        petaloid_fadeIn(petaloid, 28);
+        petaloid_fadeIn(petaloid, 24);
+        petaloid_fadeIn(petaloid, 12);
+        petaloid_fadeIn(petaloid, 3);
+        petaloid_fadeIn(petaloid, 9);
+        petaloid_fadeIn(petaloid, 19);
     }
 
     function petaloid_number0(petaloid) {
-//      petaloid_all_fadeOut();
-        petaloid_toggle(petaloid, 26);
-        petaloid_toggle(petaloid, 27);
-        petaloid_toggle(petaloid, 28);
-        petaloid_toggle(petaloid, 29);
-        petaloid_toggle(petaloid, 30);
-        petaloid_toggle(petaloid, 3);
+        petaloid_fadeIn(petaloid, 26);
+        petaloid_fadeIn(petaloid, 27);
+        petaloid_fadeIn(petaloid, 28);
+        petaloid_fadeIn(petaloid, 29);
+        petaloid_fadeIn(petaloid, 30);
+        petaloid_fadeIn(petaloid, 3);
     }
 
     function petaloid_drawNumber(petaloid, n) {
@@ -274,65 +252,39 @@
         }
     }
 
-    function second_petaloid(petaloid) {
-        //시간, 분, 초를 각각 읽어옴
-
-        var d = new Date();
-        var hourVal = d.getHours();
-        var minVal = d.getMinutes();
-        var secVal = d.getSeconds();
-        //시간과 분은 각각 자리수 마다 파싱
-        var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
-        var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
-        var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
-        var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
-        //초 시계 petaloid
+    function secController(secVal, petaloid) {
         if (secVal >= 1 && secVal <= 30) {
-            petaloid[secVal].classList.remove('animated', 'fadeOut');
-            petaloid[secVal].setAttribute('style', 'stroke: white');
-            petaloid[secVal].classList.add('animated', 'fadeIn');
+            petaloid_fadeIn(petaloid, secVal);
         } else if (secVal >= 31 && secVal <= 35) {
-            petaloid[secVal - 5].classList.remove('animated', 'fadeIn');
-            petaloid[secVal - 5].classList.add('animated', 'fadeOut');
-            setTimeout(function () {
-                petaloid[secVal - 5].setAttribute('style', 'stroke: black');
-            }, 500);
-
+            petaloid_fadeOut(petaloid, secVal - 5);
         } else if (secVal >= 36 && secVal <= 45) {
-            petaloid[secVal - 20].classList.remove('animated', 'fadeIn');
-            petaloid[secVal - 20].classList.add('animated', 'fadeOut');
-            setTimeout(function () {
-                petaloid[secVal - 20].setAttribute('style', 'stroke: black');
-            }, 500);
-
+            petaloid_fadeOut(petaloid, secVal - 20);
         } else if (secVal >= 46 && secVal <= 55) {
-            petaloid[secVal - 40].classList.remove('animated', 'fadeIn');
-            petaloid[secVal - 40].classList.add('animated', 'fadeOut');
-            setTimeout(function () {
-                petaloid[secVal - 40].setAttribute('style', 'stroke: black');
-            }, 500);
-
+            petaloid_fadeOut(petaloid, secVal - 40);
         } else if (secVal >= 55 && secVal <= 60) {
-            petaloid[secVal - 55].classList.remove('animated', 'fadeIn');
-            petaloid[secVal - 55].classList.add('animated', 'fadeOut');
-            setTimeout(function () {
-                petaloid[secVal - 55].setAttribute('style', 'stroke: black');
-            }, 500);
-
+            petaloid_fadeOut(petaloid, secVal - 55);
         } else if (secVal == 0) {
-            petaloid[5].classList.remove('animated', 'fadeIn');
-            petaloid[5].classList.add('animated', 'fadeOut');
-
-            petaloid[5].setAttribute('style', 'stroke: black');
-            setTimeout(function () {
-                petaloid[5].setAttribute('style', 'stroke: black');
-            }, 500);
-
+            petaloid_fadeOut(petaloid, 5);
         }
+    }
+
+    function minHourController(firstHourVal, secondHourVal, firstMinVal, secondMinVal) {
         petaloid_drawNumber(petaloid_1, firstHourVal);
         petaloid_drawNumber(petaloid_2, secondHourVal);
         petaloid_drawNumber(petaloid_3, firstMinVal);
         petaloid_drawNumber(petaloid_4, secondMinVal);
+    }
+    function clock_engine(petaloid) {
+        var d = new Date();
+        var hourVal = d.getHours();
+        var minVal = d.getMinutes();
+        var secVal = d.getSeconds();
+        var firstHourVal = parseInt(hourVal / 10);
+        var secondHourVal = parseInt(hourVal % 10);
+        var firstMinVal = parseInt(minVal / 10);
+        var secondMinVal = parseInt(minVal % 10);
+        secController(secVal, petaloid);
+        minHourController(firstHourVal, secondHourVal, firstMinVal, secondMinVal);
 
     }
 
@@ -341,36 +293,22 @@
     var petaloid_2 = [null];
     var petaloid_3 = [null];
     var petaloid_4 = [null];
+
     window.onload = function () {
         var doc_second = document.getElementById("petal_second").contentDocument;
         var doc_1 = document.getElementById("petal1").contentDocument;
         var doc_2 = document.getElementById("petal2").contentDocument;
         var doc_3 = document.getElementById("petal3").contentDocument;
         var doc_4 = document.getElementById("petal4").contentDocument;
-        var d = new Date();
-        var hourVal = d.getHours();
-        var minVal = d.getMinutes();
-        var firstHourVal = parseInt(hourVal / 10);//hour의 10의 자리
-        var secondHourVal = parseInt(hourVal % 10);//hour의 1의 자리
-        var firstMinVal = parseInt(minVal / 10);//minute의 10의 자리
-        var secondMinVal = parseInt(minVal % 10);//minute의 1의 자리
-
         init_petaloid(petaloid_second, doc_second);
         init_petaloid(petaloid_1, doc_1);
         init_petaloid(petaloid_2, doc_2);
         init_petaloid(petaloid_3, doc_3);
         init_petaloid(petaloid_4, doc_4);
-
-        petaloid_drawNumber(petaloid_1, firstHourVal);
-        petaloid_drawNumber(petaloid_2, secondHourVal);
-        petaloid_drawNumber(petaloid_3, firstMinVal);
-        petaloid_drawNumber(petaloid_4, secondMinVal);
     };
-    setInterval( function() { second_petaloid(petaloid_second); }, 500 );
-    //DOM 읽어옴
-    var sec = document.getElementById('sec');
-
-
+    setInterval(function () {
+        clock_engine(petaloid_second);
+    }, 1000);
 
 
 </script>
